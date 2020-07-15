@@ -53,6 +53,9 @@ menuItems.forEach(item => {
   header.appendChild(menuMaker(item))
 })
 
+
+
+
 //Step 2: Inside the function, iterate over the array creating a list item <li> element for each item in the array. 
 //Add those items to the <ul>
 
