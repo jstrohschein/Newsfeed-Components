@@ -149,12 +149,13 @@ const articleMaker = (articleData) => {
 }
 
 //step 4
-const article = articleMaker(data)
-const accordian = document.querySelector('.article')
-accordian.appendChild(article)
+//console.log(article)
+const accordian = document.querySelector('.articles')
+//accordian.appendChild(article)
 
 data.forEach(obj => {
-  obj.appendChild(article)
+  const article = articleMaker(obj)
+  accordian.appendChild(article)
 })
 
 
