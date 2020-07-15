@@ -138,6 +138,8 @@ const articleMaker = (articleData) => {
   //step 2 
   expand.addEventListener('click', () => {
     expand.classList.toggle('article-open')
+
+
   })
 
   //step 3 
