@@ -25,13 +25,13 @@ const menuMaker = (arr) => {
   //HTML elements
   const menu = document.createElement('div')
   const list = document.createElement('ul')
-  const li = []
 
-  for (let i = 0; i < arr.length; i++) {
-    li[i] = document.createElement('li')
-    list.appendChild(li[i])
-    li[i].textContent = arr[i]
-  }
+  arr.forEach(item => {
+    const menuItem = document.createElement('li')
+    list.appendChild(menuItem)
+    menuItem.textContent = item
+  })
+
 
   //HTML structure
   menu.appendChild(list)
@@ -45,13 +45,14 @@ const menuMaker = (arr) => {
     menu.classList.toggle('menu--open')
   })
 
+
+  const header = document.querySelector('.header')
+  header.appendChild(menu)
+
   return menu
 }
 
-const header = document.querySelector('.header')
-menuItems.forEach(item => {
-  header.appendChild(menuMaker(item))
-})
+menuMaker(menuItems)
 
 
 
