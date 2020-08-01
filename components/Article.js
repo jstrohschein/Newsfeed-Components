@@ -1,7 +1,6 @@
 /* This is the data we will be using to create our articles */
 /* Look over this data, then proceed to line 91*/
-const data = [
-  {
+const data = [{
     title: 'Lambda School Students: "We\'re the best!"',
     date: 'Nov 5th, 2018',
     firstParagraph: `Lucas ipsum dolor sit amet ben twi'lek padmé darth darth darth moff hutt organa twi'lek. Ben amidala secura skywalker lando
@@ -102,12 +101,68 @@ const data = [
   Hint: You will need to use createElement more than once here!
 
   Your function should take either an object as its one argument, or 5 separate strings mapping to each property of an article object.
-
-  Step 2: Add an event listener to the expandButton span. This listener should toggle the class 'article-open' on the 'article' div.
-
-  Step 3: Don't forget to return something from your function!
-
-  Step 4: Outside your function, loop over the data. At each iteration you'll use your component to create an article and append it to the DOM inside the 'articles' div.
-
-  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+
+
+const articleMaker = (articleData) => {
+
+  //creating elements
+  const container = document.createElement('div')
+  const articleTitle = document.createElement('h2')
+  const articleDate = document.createElement('p')
+  const firstParagraph = document.createElement('p')
+  const secondParagraph = document.createElement('p')
+  const thirdParagragh = document.createElement('p')
+  const expand = document.createElement('span')
+
+  //HTML structure
+  container.appendChild(articleTitle)
+  container.appendChild(articleDate)
+  container.appendChild(firstParagraph)
+  container.appendChild(secondParagraph)
+  container.appendChild(thirdParagragh)
+  container.appendChild(expand)
+
+  //CSS classes
+  container.classList.add('article')
+  articleDate.classList.add('date')
+  expand.classList.add('expandButton')
+
+  //content
+  articleTitle.textContent = articleData.title
+  articleDate.textContent = articleData.date
+  firstParagraph.textContent = articleData.firstParagraph
+  secondParagraph.textContent = articleData.secondParagraph
+  thirdParagragh.textContent = articleData.thirdParagragh
+
+  //step 2 
+  expand.addEventListener('click', () => {
+    expand.classList.toggle('article-open')
+
+
+  })
+
+  //step 3 
+  return container
+
+
+}
+
+//step 4
+//console.log(article)
+const accordian = document.querySelector('.articles')
+//accordian.appendChild(article)
+
+data.forEach(obj => {
+  const article = articleMaker(obj)
+  accordian.appendChild(article)
+})
+
+
+//Step 2: Add an event listener to the expandButton span. This listener should toggle the class 'article-open' on the 'article' div.
+
+//Step 3: Don't forget to return something from your function!
+
+//Step 4: Outside your function, loop over the data. At each iteration you'll use your component to create an article and append it to the DOM inside the 'articles' div.
+
+//Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.

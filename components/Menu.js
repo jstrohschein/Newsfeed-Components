@@ -18,16 +18,52 @@ let menuItems = [
     </ul>
   </div>
 
-  The 'menuMaker' takes an array as its only argument.
+  The 'menuMaker' takes an array as its only argument.*/
 
-  Step 2: Inside the function, iterate over the array creating a list item <li> element for each item in the array. 
-  Add those items to the <ul>
+const menuMaker = (arr) => {
 
-  Step 3: Using a DOM selector, select the menu button (the element with a class of 'menu-button') currently on the DOM.
+  //HTML elements
+  const menu = document.createElement('div')
+  const list = document.createElement('ul')
 
-  Step 4: add a click event listener to the menu button. When clicked it should toggle the class 'menu--open' on the menu (your div with a 'menu' class).
+  arr.forEach(item => {
+    const menuItem = document.createElement('li')
+    list.appendChild(menuItem)
+    menuItem.textContent = item
+  })
 
-  Step 5: return your div with a 'menu' class.
 
-  Step 6: Use 'menuMaker' to create a menu using the 'menuItems' array, and append the returned menu to the header.
-*/
+  //HTML structure
+  menu.appendChild(list)
+
+  //Add classes (from menu.less)
+  menu.classList.add('menu')
+
+  //eventListener
+  const menuBtn = document.querySelector('.menu-button')
+  menuBtn.addEventListener('click', () => {
+    menu.classList.toggle('menu--open')
+  })
+
+
+  const header = document.querySelector('.header')
+  header.appendChild(menu)
+
+  return menu
+}
+
+menuMaker(menuItems)
+
+
+
+
+//Step 2: Inside the function, iterate over the array creating a list item <li> element for each item in the array. 
+//Add those items to the <ul>
+
+//Step 3: Using a DOM selector, select the menu button (the element with a class of 'menu-button') currently on the DOM.
+
+//Step 4: add a click event listener to the menu button. When clicked it should toggle the class 'menu--open' on the menu (your div with a 'menu' class).
+
+//Step 5: return your div with a 'menu' class.
+
+//Step 6: Use 'menuMaker' to create a menu using the 'menuItems' array, and append the returned menu to the header.
